@@ -67,7 +67,14 @@ The form recipient defaults to the address configured in `api/contact.js`. To ov
 CONTACT_TO=your-email@example.com
 ```
 
+For a custom domain, also set the origin permitted to submit the contact form:
+
+```env
+CONTACT_ALLOWED_ORIGIN=https://yourdomain.com
+```
+
 ## Notes
 
 - Do not commit your `RESEND_API_KEY` to the repository.
+- Keep `CONTACT_TO`, `CONTACT_FROM`, and `CONTACT_ALLOWED_ORIGIN` as Vercel environment variables; never expose credentials in client-side files.
 - After replacing the CV, redeploy the site so the new PDF is available to visitors.

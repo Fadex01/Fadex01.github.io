@@ -12,12 +12,12 @@ if (cvLink) {
   cvLink.title = 'View my CV';
 }
 
-menu.addEventListener('click', () => {
+menu?.addEventListener('click', () => {
   const open = nav.classList.toggle('open');
   menu.setAttribute('aria-expanded', open);
 });
 
-nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
+nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
 
 const roles = ['Web2 & Web3 Social Media Manager', 'Community Manager', 'Discord & Telegram Moderator'];
 let role = 0;
@@ -42,7 +42,7 @@ function typeRole() {
 }
 typeRole();
 
-const revealObserver = new IntersectionObserver(entries => {
+const revealObserver = 'IntersectionObserver' in window && new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('show');
@@ -50,9 +50,12 @@ const revealObserver = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.13 });
-document.querySelectorAll('.reveal, .skill').forEach(element => revealObserver.observe(element));
+document.querySelectorAll('.reveal, .skill').forEach(element => {
+  if (revealObserver) revealObserver.observe(element);
+  else element.classList.add('show');
+});
 
-const counterObserver = new IntersectionObserver(entries => {
+const counterObserver = 'IntersectionObserver' in window && new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     document.querySelectorAll('.count').forEach(element => {
@@ -73,7 +76,9 @@ const counterObserver = new IntersectionObserver(entries => {
     counterObserver.disconnect();
   });
 }, { threshold: 0.45 });
-document.querySelectorAll('.achievements').forEach(element => counterObserver.observe(element));
+document.querySelectorAll('.achievements').forEach(element => {
+  if (counterObserver) counterObserver.observe(element);
+});
 
 const navItems = [...document.querySelectorAll('.navlinks a')];
 const sections = [...document.querySelectorAll('main section[id]')];
@@ -86,10 +91,24 @@ window.addEventListener('scroll', () => {
   navItems.forEach(item => item.classList.toggle('active', item.getAttribute('href') === `#${current}`));
   toTop.classList.toggle('show', window.scrollY > 500);
 });
-toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+toTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-document.getElementById('year').textContent = new Date().getFullYear();
-document.getElementById('contactForm').addEventListener('submit', async event => {
+const year = document.getElementById('year');
+if (year) year.textContent = new Date().getFullYear();
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  [['name', 100], ['email', 254], ['subject', 160], ['message', 5000]].forEach(([field, limit]) => {
+    contactForm.elements[field]?.setAttribute('maxlength', String(limit));
+  });
+  const honeypot = document.createElement('input');
+  honeypot.name = 'website';
+  honeypot.autocomplete = 'off';
+  honeypot.tabIndex = -1;
+  honeypot.className = 'honeypot';
+  honeypot.setAttribute('aria-hidden', 'true');
+  contactForm.append(honeypot);
+}
+document.getElementById('contactForm')?.addEventListener('submit', async event => {
   event.preventDefault();
   const formElement = event.currentTarget;
   const submitButton = formElement.querySelector('button[type="submit"]');
@@ -99,10 +118,13 @@ document.getElementById('contactForm').addEventListener('submit', async event =>
   submitButton.textContent = 'Sending...';
   note.style.display = 'none';
 
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 12_000);
   try {
     const response = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      signal: controller.signal,
       body: JSON.stringify(Object.fromEntries(new FormData(formElement)))
     });
 
@@ -116,6 +138,7 @@ document.getElementById('contactForm').addEventListener('submit', async event =>
     note.style.color = '#ff9db5';
     note.style.display = 'inline';
   } finally {
+    clearTimeout(timeout);
     submitButton.disabled = false;
     submitButton.textContent = 'Send Message ↗';
   }
