@@ -584,6 +584,15 @@ header{
   background:linear-gradient(160deg,rgba(145,108,255,.13),rgba(17,17,32,.92))
 }
 
+.project-four{
+  border-color:rgba(82,227,180,.22)
+}
+
+.project-four:hover{
+  border-color:rgba(82,227,180,.62);
+  background:linear-gradient(160deg,rgba(82,227,180,.12),rgba(17,17,32,.92))
+}
+
 .project-image{
   height:150px;
   overflow:hidden;
@@ -1504,6 +1513,232 @@ form{
 }
 
 
+}
+
+
+/* ========================================
+   10. Enhanced responsive link styling
+   ======================================== */
+
+/* Base link enhancements */
+a{
+  transition:color .2s ease, border-color .2s ease, background .2s ease, transform .2s ease
+}
+
+a:focus-visible{
+  outline:2px solid var(--blue);
+  outline-offset:3px;
+  border-radius:4px
+}
+
+/* Button links - ensure minimum touch target */
+.btn{
+  min-height:48px;
+  min-width:48px;
+  position:relative
+}
+
+.btn:focus-visible{
+  outline:2px solid var(--blue);
+  outline-offset:2px
+}
+
+/* Contact list links - touch-friendly */
+.contact-list a{
+  min-width:48px;
+  min-height:48px;
+  width:48px;
+  height:48px
+}
+
+.contact-list a:focus-visible{
+  outline:2px solid var(--blue);
+  outline-offset:2px
+}
+
+/* Project action links */
+.project-actions a{
+  padding:8px 12px;
+  display:inline-block;
+  border-radius:6px;
+  transition:all .2s ease
+}
+
+.project-actions a:focus-visible{
+  outline:2px solid var(--blue);
+  outline-offset:2px
+}
+
+/* Navigation links - enhanced focus */
+.navlinks a:focus-visible{
+  outline:none;
+  color:#fff;
+  text-decoration:underline
+}
+
+.navlinks a:focus-visible:after{
+  width:100%
+}
+
+/* Logo links */
+.logo:focus-visible{
+  outline:2px solid var(--purple);
+  outline-offset:4px;
+  border-radius:6px
+}
+
+.nav-avatar:focus-visible{
+  outline:2px solid var(--blue);
+  outline-offset:3px
+}
+
+/* Social icon links */
+.contact-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  transition:all .25s ease
+}
+
+.contact-icon:focus-visible{
+  outline:2px solid var(--blue);
+  outline-offset:3px
+}
+
+/* Join community links */
+.join-links a:focus-visible{
+  outline:2px solid var(--blue);
+  outline-offset:2px;
+  background:linear-gradient(135deg, rgba(145,108,255,0.25), rgba(85,199,255,0.2))
+}
+
+/* Footer links */
+.footer-links a:focus-visible{
+  outline:2px solid var(--blue);
+  outline-offset:2px;
+  color:var(--blue)
+}
+
+/* Tablet and down - enhanced touch spacing */
+@media(max-width:860px){
+  .btn{
+    min-height:48px;
+    padding:0 16px;
+    font-size:.85rem
+  }
+
+  .contact-list a{
+    width:48px;
+    height:48px
+  }
+
+  .project-actions a{
+    padding:10px 14px;
+    font-size:.75rem
+  }
+
+  .join-links a{
+    padding:14px 18px;
+    font-size:.9rem;
+    min-height:44px;
+    display:inline-flex;
+    align-items:center
+  }
+}
+
+/* Mobile - maximum touch-friendly sizing */
+@media(max-width:540px){
+  .btn{
+    min-height:48px;
+    min-width:100%;
+    padding:12px 16px;
+    font-size:.85rem
+  }
+
+  .btn:not(.hero-actions .btn-quiet){
+    width:100%
+  }
+
+  .hero-actions .btn-quiet{
+    width:auto;
+    min-width:48px
+  }
+
+  .contact-list a{
+    width:52px;
+    height:52px;
+    font-size:1.1rem
+  }
+
+  .contact-list svg{
+    width:24px;
+    height:24px
+  }
+
+  .project-actions{
+    flex-direction:column;
+    gap:10px
+  }
+
+  .project-actions a{
+    width:100%;
+    padding:12px 14px;
+    text-align:center;
+    justify-content:center;
+    display:flex;
+    align-items:center;
+    font-size:.75rem;
+    min-height:44px
+  }
+
+  .join-links{
+    flex-direction:column;
+    gap:12px
+  }
+
+  .join-links a{
+    width:100%;
+    justify-content:center;
+    padding:14px 16px;
+    font-size:.9rem;
+    min-height:48px
+  }
+
+  .navlinks a{
+    font-size:.8rem;
+    padding:12px 0
+  }
+
+  .footer-links a{
+    font-size:.75rem;
+    padding:8px 0
+  }
+}
+
+/* Extra small devices */
+@media(max-width:360px){
+  .btn{
+    font-size:.8rem;
+    padding:12px 12px;
+    min-height:44px
+  }
+
+  .contact-list a{
+    width:44px;
+    height:44px
+  }
+
+  .join-links a{
+    padding:12px 14px;
+    font-size:.85rem;
+    min-height:44px
+  }
+
+  .project-actions a{
+    font-size:.7rem;
+    padding:10px 12px;
+    min-height:40px
+  }
 }
 
 @media(prefers-reduced-motion:reduce){
