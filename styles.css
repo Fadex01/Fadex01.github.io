@@ -690,6 +690,172 @@ header{
 /* ========================================
    6. Experience and achievements
    ======================================== */
+
+/* Timeline Layout */
+.experience-timeline {
+  position: relative;
+  max-width: 1100px;
+  margin: 60px auto 0;
+  padding: 40px 20px;
+}
+
+/* Central Timeline Line */
+.experience-timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  top: 0;
+  background: linear-gradient(180deg, var(--purple) 0%, var(--blue) 50%, var(--green) 100%);
+  opacity: 0.7;
+}
+
+/* Timeline Entries */
+.timeline-entry {
+  margin-bottom: 80px;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Timeline Marker - Center */
+.timeline-marker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  box-shadow: 0 0 0 8px var(--bg), 0 0 0 11px var(--purple);
+  z-index: 10;
+  top: 24px;
+  flex-shrink: 0;
+}
+
+/* Right Entry (first, third) */
+.timeline-right {
+  justify-content: flex-start;
+  padding-right: 52%;
+}
+
+.timeline-right .timeline-content {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* Left Entry (second) */
+.timeline-left {
+  justify-content: flex-end;
+  padding-left: 52%;
+}
+
+.timeline-left .timeline-content {
+  margin-right: auto;
+  text-align: left;
+}
+
+/* Timeline Content */
+.timeline-content {
+  width: 100%;
+  max-width: 420px;
+  padding: 32px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-content:hover {
+  background: linear-gradient(135deg, rgba(145, 108, 255, 0.15), rgba(85, 199, 255, 0.1));
+  border-color: rgba(145, 108, 255, 0.35);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(145, 108, 255, 0.25);
+}
+
+/* Timeline Date */
+.timeline-date {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 14px;
+  padding: 7px 14px;
+  background: rgba(85, 199, 255, 0.12);
+  border-radius: 8px;
+  border-left: 3px solid var(--blue);
+}
+
+/* Timeline Content Heading */
+.timeline-content h3 {
+  margin: 14px 0 8px;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* Company Name */
+.company-name {
+  font-size: 0.84rem;
+  color: var(--muted);
+  margin: 0 0 14px;
+  font-weight: 500;
+}
+
+/* Timeline Description */
+.timeline-description {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 12px 0;
+}
+
+/* Experience Tags */
+.experience-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+  justify-content: flex-start;
+}
+
+.timeline-left .experience-tags {
+  justify-content: flex-start;
+}
+
+.timeline-right .experience-tags {
+  justify-content: flex-end;
+}
+
+.exp-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, rgba(145, 108, 255, 0.22), rgba(85, 199, 255, 0.16));
+  border: 1px solid rgba(145, 108, 255, 0.35);
+  border-radius: 12px;
+  color: var(--blue);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.exp-tag:hover {
+  background: linear-gradient(135deg, rgba(145, 108, 255, 0.35), rgba(85, 199, 255, 0.25));
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(145, 108, 255, 0.2);
+}
+
 .timeline{
   max-width:860px;
   margin:40px auto 0;
@@ -824,7 +990,7 @@ header{
 
 .join-links{
   display:flex;
-  gap:10px;
+  gap:14px;
   flex-wrap:wrap;
   margin-top:26px;
   position:relative;
@@ -832,8 +998,25 @@ header{
 }
 
 .join-links a{
-  border:1px solid rgba(255,255,255,.24);
-  background:rgba(255,255,255,.09)
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 20px;
+  border:1.5px solid rgba(145,108,255,0.5);
+  background:linear-gradient(135deg, rgba(145,108,255,0.12), rgba(85,199,255,0.08));
+  border-radius:10px;
+  color:var(--text);
+  font-weight:600;
+  font-size:0.95rem;
+  transition:all 0.3s ease;
+  text-decoration:none
+}
+
+.join-links a:hover{
+  border-color:var(--purple);
+  background:linear-gradient(135deg, rgba(145,108,255,0.2), rgba(85,199,255,0.15));
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(145,108,255,0.2)
 }
 
 
@@ -1086,6 +1269,60 @@ footer{
   border:0
 }
 
+/* Timeline responsive - Tablet */
+.experience-timeline {
+  padding: 40px 20px;
+  max-width: 900px;
+}
+
+.experience-timeline::before {
+  left: 40px;
+}
+
+.timeline-entry {
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 80px;
+  margin-bottom: 60px;
+}
+
+.timeline-right,
+.timeline-left {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  justify-content: flex-start;
+}
+
+.timeline-right .timeline-content,
+.timeline-left .timeline-content {
+  text-align: left;
+  max-width: 100%;
+  margin: 0;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 11px;
+  top: 24px;
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 0 0 6px var(--bg), 0 0 0 9px var(--purple);
+}
+
+.timeline-content {
+  padding: 28px;
+  width: 100%;
+}
+
+.experience-tags {
+  justify-content: flex-start !important;
+}
+
+.exp-tag {
+  font-size: 0.68rem;
+  padding: 5px 11px;
+}
 
 }
 
@@ -1171,6 +1408,78 @@ footer{
 .timeline-top{
   flex-direction:column;
   gap:1px
+}
+
+/* Mobile Experience Timeline */
+.experience-timeline {
+  padding: 30px 16px;
+  max-width: 100%;
+}
+
+.experience-timeline::before {
+  left: 12px;
+  width: 2px;
+}
+
+.timeline-entry {
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 70px;
+  margin-bottom: 50px;
+  gap: 0;
+  display: flex;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 6px;
+  top: 20px;
+  width: 12px;
+  height: 12px;
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px var(--purple);
+  flex-shrink: 0;
+}
+
+.timeline-content {
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 100%;
+  width: 100%;
+  font-size: 0.82rem;
+}
+
+.timeline-content h3 {
+  font-size: 1rem;
+  margin: 10px 0 6px;
+}
+
+.timeline-date {
+  font-size: 0.68rem;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+
+.company-name {
+  font-size: 0.78rem;
+  margin: 0 0 10px;
+}
+
+.timeline-description {
+  font-size: 0.8rem;
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.experience-tags {
+  gap: 6px;
+  margin-top: 12px;
+  justify-content: flex-start !important;
+}
+
+.exp-tag {
+  font-size: 0.62rem;
+  padding: 4px 8px;
+  margin-bottom: 4px;
 }
 
 .join-box{
