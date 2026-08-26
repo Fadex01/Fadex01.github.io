@@ -999,33 +999,113 @@ header{
 
 .join-links{
   display:flex;
-  gap:14px;
+  gap:16px;
   flex-wrap:wrap;
-  margin-top:26px;
+  margin-top:32px;
   position:relative;
-  z-index:1
+  z-index:1;
+  align-items:center
 }
 
-.join-links a{
+.community-link{
   display:inline-flex;
   align-items:center;
-  gap:8px;
-  padding:12px 20px;
-  border:1.5px solid rgba(145,108,255,0.5);
-  background:linear-gradient(135deg, rgba(145,108,255,0.12), rgba(85,199,255,0.08));
-  border-radius:10px;
+  justify-content:center;
+  gap:10px;
+  padding:14px 24px;
+  border:2px solid;
+  border-radius:12px;
   color:var(--text);
-  font-weight:600;
+  font-weight:700;
   font-size:0.95rem;
-  transition:all 0.3s ease;
-  text-decoration:none
+  transition:all 0.3s cubic-bezier(0.23,1,0.32,1);
+  text-decoration:none;
+  position:relative;
+  overflow:hidden;
+  background:rgba(255,255,255,0.03);
+  backdrop-filter:blur(10px);
+  min-height:48px;
+  letter-spacing:0.02em;
+  white-space:nowrap
 }
 
-.join-links a:hover{
-  border-color:var(--purple);
-  background:linear-gradient(135deg, rgba(145,108,255,0.2), rgba(85,199,255,0.15));
-  transform:translateY(-2px);
-  box-shadow:0 8px 24px rgba(145,108,255,0.2)
+.community-link .icon{
+  width:20px;
+  height:20px;
+  flex-shrink:0;
+  transition:all 0.3s ease
+}
+
+.community-link span{
+  display:none
+}
+
+/* Discord Link */
+.discord-link{
+  border-color:rgba(88,101,242,0.5);
+  color:#5865F2
+}
+
+.discord-link:hover{
+  border-color:#5865F2;
+  background:linear-gradient(135deg, rgba(88,101,242,0.2), rgba(88,101,242,0.1));
+  box-shadow:0 8px 32px rgba(88,101,242,0.3);
+  transform:translateY(-3px)
+}
+
+.discord-link:hover .icon{
+  transform:scale(1.15)
+}
+
+/* Telegram Link */
+.telegram-link{
+  border-color:rgba(0,136,204,0.5);
+  color:#0088CC
+}
+
+.telegram-link:hover{
+  border-color:#0088CC;
+  background:linear-gradient(135deg, rgba(0,136,204,0.2), rgba(0,136,204,0.1));
+  box-shadow:0 8px 32px rgba(0,136,204,0.3);
+  transform:translateY(-3px)
+}
+
+.telegram-link:hover .icon{
+  transform:scale(1.15)
+}
+
+/* WhatsApp Link */
+.whatsapp-link{
+  border-color:rgba(37,211,102,0.5);
+  color:#25D366
+}
+
+.whatsapp-link:hover{
+  border-color:#25D366;
+  background:linear-gradient(135deg, rgba(37,211,102,0.2), rgba(37,211,102,0.1));
+  box-shadow:0 8px 32px rgba(37,211,102,0.3);
+  transform:translateY(-3px)
+}
+
+.whatsapp-link:hover .icon{
+  transform:scale(1.15)
+}
+
+/* Newsletter Link */
+.newsletter-link{
+  border-color:rgba(145,108,255,0.6);
+  color:var(--blue)
+}
+
+.newsletter-link:hover{
+  border-color:var(--blue);
+  background:linear-gradient(135deg, rgba(85,199,255,0.2), rgba(85,199,255,0.1));
+  box-shadow:0 8px 32px rgba(85,199,255,0.3);
+  transform:translateY(-3px)
+}
+
+.newsletter-link:hover .icon{
+  transform:scale(1.15)
 }
 
 
@@ -1606,10 +1686,25 @@ a:focus-visible{
 }
 
 /* Join community links */
-.join-links a:focus-visible{
-  outline:2px solid var(--blue);
-  outline-offset:2px;
-  background:linear-gradient(135deg, rgba(145,108,255,0.25), rgba(85,199,255,0.2))
+.community-link:focus-visible{
+  outline:2px solid currentColor;
+  outline-offset:3px
+}
+
+.discord-link:focus-visible{
+  outline-color:#5865F2
+}
+
+.telegram-link:focus-visible{
+  outline-color:#0088CC
+}
+
+.whatsapp-link:focus-visible{
+  outline-color:#25D366
+}
+
+.newsletter-link:focus-visible{
+  outline-color:var(--blue)
 }
 
 /* Footer links */
@@ -1637,12 +1732,18 @@ a:focus-visible{
     font-size:.75rem
   }
 
-  .join-links a{
+  .community-link{
     padding:14px 18px;
     font-size:.9rem;
-    min-height:44px;
+    min-height:48px;
     display:inline-flex;
-    align-items:center
+    align-items:center;
+    gap:8px
+  }
+
+  .community-link .icon{
+    width:18px;
+    height:18px
   }
 }
 
@@ -1693,15 +1794,26 @@ a:focus-visible{
 
   .join-links{
     flex-direction:column;
+    gap:14px;
+    width:100%
+  }
+
+  .community-link{
+    width:100%;
+    justify-content:center;
+    padding:16px 20px;
+    font-size:.95rem;
+    min-height:52px;
     gap:12px
   }
 
-  .join-links a{
-    width:100%;
-    justify-content:center;
-    padding:14px 16px;
-    font-size:.9rem;
-    min-height:48px
+  .community-link .icon{
+    width:22px;
+    height:22px
+  }
+
+  .community-link span{
+    display:inline
   }
 
   .navlinks a{
@@ -1728,10 +1840,17 @@ a:focus-visible{
     height:44px
   }
 
-  .join-links a{
-    padding:12px 14px;
+  .community-link{
+    padding:14px 16px;
     font-size:.85rem;
-    min-height:44px
+    min-height:44px;
+    gap:10px;
+    width:100%
+  }
+
+  .community-link .icon{
+    width:16px;
+    height:16px
   }
 
   .project-actions a{
