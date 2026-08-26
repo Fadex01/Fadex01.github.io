@@ -968,8 +968,21 @@ header{
   overflow:hidden;
   padding:48px;
   border-radius:20px;
-  background:linear-gradient(120deg,#1e173f,#312172);
-  border:1px solid rgba(153,122,255,.4)
+  background:linear-gradient(120deg,#1e173f,#312172),url('assets/communitybg.jpeg') center/cover no-repeat;
+  background-blend-mode:overlay;
+  border:1px solid rgba(153,122,255,.4);
+  image-rendering:crisp-edges;
+  image-rendering:-webkit-optimize-contrast
+}
+
+.join-box::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(30,23,63,.85),rgba(49,33,114,.85));
+  border-radius:inherit;
+  pointer-events:none;
+  z-index:1
 }
 
 .join-box:after{
@@ -979,22 +992,33 @@ header{
   border-radius:50%;
   background:var(--pink);
   filter:blur(100px);
-  opacity:.17;
+  opacity:.12;
   position:absolute;
   right:-110px;
-  top:-180px
+  top:-180px;
+  z-index:2
 }
 
 .join-box h2{
   font-size:clamp(2rem,4vw,3.5rem);
   letter-spacing:-.07em;
   line-height:1.08;
-  margin:9px 0
+  margin:9px 0;
+  position:relative;
+  z-index:3
 }
 
 .join-box p{
   color:#c8c2e7;
-  margin:0
+  margin:0;
+  position:relative;
+  z-index:3
+}
+
+.join-box .eyebrow{
+  position:relative;
+  z-index:3;
+  display:inline-flex
 }
 
 .join-links{
@@ -1003,7 +1027,7 @@ header{
   flex-wrap:wrap;
   margin-top:32px;
   position:relative;
-  z-index:1;
+  z-index:3;
   align-items:center
 }
 
