@@ -1,16 +1,5 @@
 const nav = document.getElementById('navlinks');
 const menu = document.getElementById('menu');
-const cvLink = document.querySelector('.hero-actions a[download]');
-
-if (cvLink) {
-  cvLink.href = new URL('assets/cv.pdf', document.baseURI).href;
-  cvLink.removeAttribute('download');
-  cvLink.target = '_blank';
-  cvLink.rel = 'noopener';
-  cvLink.textContent = 'View CV ↗';
-  cvLink.setAttribute('aria-label', 'My CV');
-  cvLink.title = 'View my CV';
-}
 
 menu?.addEventListener('click', () => {
   const open = nav.classList.toggle('open');
