@@ -6,7 +6,7 @@ A responsive personal portfolio for Abdul-Quadri Akewusola, a Web3 Community Man
 
 - Responsive single-page layout
 - Hero, about, skills, services, portfolio, experience, and contact sections
-- Downloadable CV at `assets/cv.pdf`
+- Downloadable CV at `assets/cve.pdf`
 - Animated section reveals, skill bars, counters, and active navigation
 - Contact form backed by a Vercel serverless function and Resend
 
@@ -16,7 +16,7 @@ A responsive personal portfolio for Abdul-Quadri Akewusola, a Web3 Community Man
 ├── api/
 │   └── contact.js          # Vercel contact-form endpoint
 ├── assets/
-│   ├── cv.pdf              # Downloadable CV
+│   ├── cve.pdf             # Downloadable CV
 │   └── metaim.jpeg         # Profile image
 ├── index.html              # Page markup
 ├── styles.css              # Visual styles and responsive layout
